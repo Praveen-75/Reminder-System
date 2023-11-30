@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+</head>
+<style>
+     .main{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          line-height: 3vw;
+          flex-direction: column;
+     }
+     a{
+          font-size: 2vw;
+          color: black;
+          text-decoration: none;
+     }
+     #log{
+          padding: 1vw 6vw;
+          margin-top: 2vw;
+          background-color: blue;
+          border-radius: 2vw;
+          color: #fff;
+     }
+</style>
+<body>
+     <div class="main">
+          <h1>Welcome to the Reminder Application <%= foundUser.username %>
+          </h1>
+          <a href="/add">Set Reminder</a>
+          <a href="/update">Modify Reminder</a>
+          <a href="/dis">Disable Reminder</a>
+          <a href="/en">Enable Reminder</a>
+          <a href="/list">View Reminder</a>
+          <a id="log" href="logout">LogOut</a>
+     </div>
+</body>
+
+</html>
