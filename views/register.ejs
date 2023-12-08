@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,22 +8,55 @@
      <title>Document</title>
      <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
+<style>
+     .mid1 {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          margin-top: 10%;
+     }
+
+     input {
+          height: 2vw;
+          width: 13vw;
+          margin-top: .5vw;
+     }
+
+     button {
+          height: 2vw;
+          width: 6vw;
+          margin-top: 1vw;
+          border: none;
+          border-radius: 1vw;
+          color: #fff;
+          background-color: blue;
+     }
+
+     a {
+          color: black;
+          display: flex;
+          line-height: 2vw;
+     }
+</style>
+
 <body>
      <div id="main">
           <div id="mid">
                <div class="mid1">
                     <h2>Register Pages</h2>
                     <form action="/register" method="post" autocomplete="off">
-                         <input type="text" name="name" placeholder="name">
-                         <input type="text" name="username" placeholder="username">
-                         <input type="email" name="email" placeholder="Email">
-                         <input type="text" name="mobile" placeholder="Mobile No.">
-                         <input type="password" name="password" placeholder="password">
+                         <input type="text" name="name" placeholder="name"><br>
+                         <input type="text" name="username" placeholder="username"><br>
+                         <input type="email" name="email" placeholder="Email"><br>
+                         <input type="text" name="mobile" placeholder="Mobile No."><br>
+                         <input type="password" name="password" placeholder="password"><br>
                          <div id="new"><button>Done</button></div>
-                         <a href="/login">pahale se hai</a>
+                         <a href="/login">Already Account</a>
                     </form>
                </div>
           </div>
      </div>
 </body>
+
 </html>
