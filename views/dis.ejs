@@ -12,8 +12,13 @@
           justify-content: center;
           flex-direction: column;
           line-height: 2vw;
+          background-color: bisque;
+          width: 50%;
+          margin-top: 10%;
+          margin-left: 25%;
      }
      button{
+          cursor: pointer;
           margin-top: 1.1vw;
           height: 3vw;
           font-size: 1.1vw;
@@ -23,11 +28,18 @@
           border: none;
           border-radius: 2vw;
      }
+     button a{
+          color: #fff;
+          text-decoration: none;
+     }
+     a{
+          color: black;
+     }
      
 </style>
 <body>
      <div class="main">
-          <h1>Set a new Reminder</h1>
+          <h1>Disable Reminder</h1>
           <form action="/add" method="post" autocomplete="off">
                Select a date : <input type="date" name="date" required><br>
                <!-- <h3>Subject</h3> -->
