@@ -38,9 +38,10 @@
                        <h1>Email : <%= acc.email  %></h1>
                        <h1>Mobile : <%= acc.mobile  %></h1>
                        <h1>sms : <%= acc.sms  %></h1>
+                       <h1>Days : <%= acc.days  %></h1>
                       <button><a href="/delete/<%= acc._id %>">Delete</a></button>
                       <button><a href="/profile">back</a></button>
-                      <button><a href="/update">update</a></button>
+                      <button><a href="/<%= acc._id %>/update">update</a></button>
                       <a id="log" href="logout">LogOut</a>
                </div>
              <% }) %>
