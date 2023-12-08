@@ -6,6 +6,10 @@ const add = mongoose.Schema({
      textarea: String,
      email: String,
      mobile: String,
+     userid: [{
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "rem"
+     }],
      sms: String,
      days: String
 })
