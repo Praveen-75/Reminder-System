@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const userModel = require("./users")
-const add = require("./add")
+const addRemider = require("./add")
 const passport = require("passport")
 const localStrategy = require("passport-local");
 
@@ -47,11 +47,13 @@ router.get("/login", function (req, res) {
   res.render("login")
 })
 
-router.get("/add", function (req, res) {
+router.get("/add", async function (req, res) {
+  // await userModel.findOne({ _id: req.params.id })
   res.render("add")
 })
-router.post("/add", isLoggedIn, async function (req, res) {
-  add.create({
+
+router.post("/:id/add", isLoggedIn, function (req, res) {
+  addRemider.create({
     date: req.body.date,
     subject: req.body.subject,
     textarea: req.body.textarea,
@@ -60,28 +62,27 @@ router.post("/add", isLoggedIn, async function (req, res) {
     sms: req.body.sms,
     days: req.body.days
   }).then(function (data) {
-    res.redirect("/profile")
+    res.redirect("/list")
   }).catch(function (e) {
     res.send(e)
   })
 })
 
 router.get("/list", isLoggedIn, function (req, res) {
-  add.find()
+  addRemider.find()
     .then(function (data) {
       res.render("list", { data })
     })
 })
+
 router.get('/delete/:id', async function (req, res, next) {
-  add.findOneAndDelete({ _id: req.params.id })
+  addRemider.findOneAndDelete({ _id: req.params.id })
     .then(function (data) {
-      res.redirect(req.headers.referer)
+      res.redirect("/profile")
     })
 });
 
-router.get("/update", function (req, res) {
-  res.render("update")
-})
+
 router.get("/dis", function (req, res) {
   res.render("dis");
 
@@ -89,12 +90,25 @@ router.get("/dis", function (req, res) {
 router.get("/en", function (req, res) {
   res.render("en")
 })
-router.get('/update/:id', function (req, res, next) {
-  add.updateOne(
-    { textarea: req.params.textarea }
+
+router.get("/:id/update", function (req, res) {
+  res.render("update")
+})
+
+router.post('/:id/update', isLoggedIn, function (req, res, next) {
+  addRemider.updateOne(
+    {
+      date: req.body.date,
+      subject: req.body.subject,
+      textarea: req.body.textarea,
+      email: req.body.email,
+      mobile: req.body.mobile,
+      sms: req.body.sms,
+      days: req.body.days
+    }
   )
     .then(function (data) {
-      res.redirect("list")
+      res.redirect("/list")
     })
 })
 
@@ -108,6 +122,7 @@ router.get("/profile", isLoggedIn, function (req, res) {
       res.render("profile", { foundUser })
     })
 })
+
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
@@ -121,40 +136,6 @@ router.get("/logout", function (req, res) {
     res.redirect("/")
   });
 });
-
-router.get("/delete/:id", function (req, res) {
-  userModel.findOne({ _id: req.params.id })
-    .then(function (deleteUser) {
-      if (deleteUser.username === req.session.passport.user) {
-        userModel.findOneAndDelete({ _id: req.params.id })
-          .then(function (delet) {
-            res.redirect(req.headers.referer);
-          })
-      } else {
-        res.send("Bhai Mt Presan Ho Kuch Hoga Nhi Tere se ?")
-      }
-    })
-})
-
-router.get("/forget", function (req, res) {
-  res.render("forget")
-})
-
-
-router.get("/reset/password/:id/:otp", function (req, res) {
-  userModel.findOne({ _id: req.params.id })
-    .then(function (user) {
-      if (user.expiresAt < Date.now()) {
-        res.send("Sorrry")
-      } else {
-        if (user.otp === req.params.otp) {
-          res.render("setpass", { user })
-        }
-      }
-    })
-})
-
-
 
 
 module.exports = router;
