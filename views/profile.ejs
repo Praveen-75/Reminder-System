@@ -13,14 +13,21 @@
           justify-content: center;
           line-height: 3vw;
           flex-direction: column;
+          background-color: bisque;
+          width: 80%;
+          margin-left: 25%;
+          border-radius: 2vw;
+          height: 30vw;
+          width: 50vw;
+          margin-top: 10%;
      }
      a{
           font-size: 2vw;
-          color: black;
+          color: rgb(23, 23, 23);
           text-decoration: none;
      }
      #log{
-          padding: 1vw 6vw;
+          padding: .3vw 5vw;
           margin-top: 2vw;
           background-color: blue;
           border-radius: 2vw;
@@ -32,7 +39,7 @@
           <h1>Welcome to the Reminder Application <%= foundUser.username %>
           </h1>
           <a href="/add">Set Reminder</a>
-          <a href="/update">Modify Reminder</a>
+          <a href="/<%= foundUser._id %>/update">Modify Reminder</a>
           <a href="/dis">Disable Reminder</a>
           <a href="/en">Enable Reminder</a>
           <a href="/list">View Reminder</a>
