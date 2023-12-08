@@ -9,14 +9,20 @@
 <style>
      .main {
           display: flex;
+          background-color: bisque;
           align-items: center;
           justify-content: center;
           flex-direction: column;
           line-height: 2vw;
+          height: 20vw;
+          width: 50%;
+          margin-left: 25%;
+          margin-top: 15%;
      }
 
      button {
           margin-top: 1.1vw;
+          cursor: pointer;
           height: 3vw;
           font-size: 1.1vw;
           width: 10vw;
@@ -25,12 +31,16 @@
           border: none;
           border-radius: 2vw;
      }
+     button a{
+          color: #fff;
+          text-decoration: none;
+     }
 </style>
 
 <body>
      <div class="main">
-          <h1>Set a new Reminder</h1>
-          <form action="/add" method="post" autocomplete="off">
+          <h1>Enable Reminder</h1>
+          <form action="/en" method="post" autocomplete="off">
                Select a date : <input type="date" name="date" required><br>
                <!-- <h3>Subject</h3> -->
                Subject: <select name="subject" id="">
