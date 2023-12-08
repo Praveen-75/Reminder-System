@@ -52,7 +52,7 @@ router.get("/add", async function (req, res) {
   res.render("add")
 })
 
-router.post("/:id/add", isLoggedIn, function (req, res) {
+router.post("/add", isLoggedIn, function (req, res) {
   addRemider.create({
     date: req.body.date,
     subject: req.body.subject,
